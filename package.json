@@ -1,0 +1,19 @@
+{
+  "name": "quiz-app",
+  "version": "1.0.0",
+  "description": "a quiz app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "arun",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.13.1",
+    "ejs": "^2.3.2",
+    "express": "^4.13.0",
+    "express-session": "^1.11.3",
+    "mongodb": "^2.0.35",
+    "path": "^0.11.14"
+  }
+}

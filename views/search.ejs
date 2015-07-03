@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Search</title>
+		<link rel="stylesheet" href="/stylesheets/header.css" />
+		<link rel="stylesheet" href="/stylesheets/container.css" />
+		<link rel="stylesheet" href="/stylesheets/form.css" />
+		<link rel="stylesheet" href="/stylesheets/form-extra.css" />
+		<link rel="stylesheet" href="/stylesheets/search.css" />
+	</head>
+	<body>
+		<%- include("header") %>
+		<div class="container">
+			<div class="container-header">
+				<h1>Search for a question</h1>
+			</div>
+			<div class="container-body">
+				<br /><br /><br />
+				<form id="search" class="container-form" action="search/submit" method="get">
+					<div><label class="form-left">Category:</label>
+						<select class="form-right" name="category" required>
+							<option>Select...</option>
+							<option value="sports">Sports</option>
+							<option value="video games">Video games</option>
+							<option value="literature">Literature</option>
+							<option value="movies and shows">Movies and shows</option>
+							<option value="science">Science</option>
+						</select>
+					</div><br /><br />
+					<div><label class="form-left">Difficulty:</label>
+						<select class="form-right" name="difficulty" required>
+							<option>Select...</option>
+							<option value="1">Easy</option>
+							<option value="2">Medium</option>
+							<option value="3">Hard</option>
+						</select>
+					</div><br /><br />
+					<button type="submit" class="button">Search</button>
+				</form>
+			</div>
+	</body>
+</html>

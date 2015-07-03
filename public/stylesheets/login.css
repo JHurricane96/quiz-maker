@@ -1,0 +1,70 @@
+html, body {
+	padding: 0;
+	background-image: url("/images/orange.jpg");
+	//font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-family: fantasy;
+	font-size: 1.05em;
+}
+
+.container {
+	margin-top: 100px;
+	width: 80%;
+}
+
+
+h1 {
+	font-size: 2.5em;
+	font-weight: 100;
+}
+
+.container-body {
+	text-align: center;
+	padding-bottom: 20px;
+}
+
+.container-plain {
+	text-align: center;
+	margin-top: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 60%;
+}
+
+button {
+	display: block;
+	margin: auto;
+	border-radius: 4px;
+	color: #404040;
+	border: 1px solid white;
+	background-color: transparent;
+	padding: 5px;
+	transition: background-color 0.3s, border 0.2s, color 0.3s;
+	font-size: 1.1em;
+}
+
+button:hover {
+	border: 1px solid #808080;
+	position: relative;
+	top: 1px;
+	background-color: #C0C040;
+	color: white;
+	cursor: pointer;
+}
+
+button:active {
+	transition: none;
+	top: 2px;
+	background-color: #808020;
+}
+
+.container-plain button {
+	margin-top: 15px;
+}
+
+#register {
+	display: none;
+}
+
+#show-login {
+	display: none;
+}

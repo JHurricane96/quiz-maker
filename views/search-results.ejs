@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Search</title>
+		<link rel="stylesheet" href="/stylesheets/header.css" />
+		<link rel="stylesheet" href="/stylesheets/container.css" />
+		<link rel="stylesheet" href="/stylesheets/form.css" />
+		<link rel="stylesheet" href="/stylesheets/form-extra.css" />
+		<link rel="stylesheet" href="/stylesheets/search-results.css" />
+		<script src="/javascripts/search-results.js"></script>
+	</head>
+	<body>
+		<%- include("header") %>
+		<div class="container">
+			<div class="container-header">
+				<h1>Search results</h1>
+			</div>
+			<div class="container-body">
+				<br />
+				<% questions.forEach(function (question) { %>
+					<p><%= question.question %><p><br />
+				<% }) %>
+				<button id="more" class="button">Moar</button>
+			</div>
+		</div>
+	</body>
+</html>

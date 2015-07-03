@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Make your question</title>
+		<link rel="stylesheet" href="/stylesheets/header.css" />
+		<link rel="stylesheet" href="/stylesheets/container.css" />
+		<link rel="stylesheet" href="/stylesheets/form.css" />
+		<link rel="stylesheet" href="/stylesheets/form-extra.css" />
+		<link rel="stylesheet" href="/stylesheets/make.css" />
+		<script src="/javascripts/make.js"></script>
+	</head>
+	<body>
+		<%- include("header") %>
+		<div class="container">
+			<div class="container-header">
+				<h1>Make your question!</h1>
+			</div>
+			<div class="container-body">
+				<form id="make" class="container-form" action="make/submit" method="post">
+					<br /><br /><br />
+					<div><label id="question" class="form-left">Your question:</label><textarea name="question" class="form-right" required></textarea></div><br /><br />
+					<div><label class="form-left">Choice A:</label><input class="form-right" name="choice-A" type="text" required></input></div><br /><br />
+					<div><label class="form-left">Choice B:</label><input class="form-right" name="choice-B" type="text" required></input></div><br /><br />
+					<div><label class="form-left">Choice C:</label><input class="form-right" name="choice-C" type="text" required></input></div><br /><br />
+					<div><label class="form-left">Choice D:</label><input class="form-right" name="choice-D" type="text" required></input></div><br /><br />
+					<div><label class="form-left">Correct answer:</label>
+						<select class="form-right" name="correct-answer" required>
+							<option value="">Select...</option>
+							<option value="A">A</option>
+							<option value="B">B</option>
+							<option value="C">C</option>
+							<option value="D">D</option>
+						</select>
+					</div><br /><br />
+					<div><label class="form-left">Category:</label>
+						<select class="form-right" name="category" required>
+							<option value="">Select...</option>
+							<option value="sports">Sports</option>
+							<option value="video games">Video games</option>
+							<option value="literature">Literature</option>
+							<option value="movies and shows">Movies and shows</option>
+							<option value="science">Science</option>
+						</select>
+					</div><br /><br />
+					<div><label class="form-left">Difficulty:</label>
+						<select class="form-right" name="difficulty" required>
+							<option value="">Select...</option>
+							<option value="1">Easy</option>
+							<option value="2">Medium</option>
+							<option value="3">Hard</option>
+						</select>
+					</div><br /><br />
+					<button type="submit" class="button">Send your question!</button>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

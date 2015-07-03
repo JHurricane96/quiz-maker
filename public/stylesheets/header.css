@@ -1,0 +1,95 @@
+#header {
+	height: 68px;
+	text-align: center;
+	width: 100%;
+	background-color: black;
+}
+
+.header-button {
+	float: left;
+	background-color: black;
+	border: 0;
+	width: 15%;
+	//margin: 0 3%;
+	height: 68px;
+	color: #CCCCCC;
+	transition: background-color 0.25s 0.05s, color 0.25s 0.05s;
+	font-family: fantasy;
+	font-size: 0.9em;
+}
+
+.header-button:hover {
+	cursor: pointer;
+	color: #4080C0;
+	background-color: #404040;
+}
+
+.header-button:active {
+	background-color: #202020;
+	transition: none;
+}
+
+.header-button:focus {
+	outline: none;
+	box-shadow: none;
+}
+
+#header a:focus {
+	outline: none;
+}
+
+#header-search {
+	margin-left: 2%;
+	margin-top: 12px;
+	width: 20%;
+	display: inline-block;
+}
+
+#header-search input[type="search"] {
+	width: 75%;
+	border: 0;
+	border-radius: 3px;
+	box-shadow: 1px 1px 2px grey inset;
+	padding: 3px;
+	color: #808080;
+}
+
+#search-submit {
+	vertical-align: middle;
+	display: inline-block;
+	height: 20px;
+	box-shadow: none;
+	border: 0;
+}
+
+#search-submit:hover {
+	position: relative;
+	top: 1px;
+}
+
+#search-submit:active {
+	position: relative;
+	top: 1.5px;
+}
+
+#header-search button {
+	width: 75%;
+	float: left;
+	background-color: black;
+	border: 0;
+	padding-top: 7px;
+	color: #CCCCCC;
+	font-family: fantasy;
+	font-size: 0.73em;
+	transition: background-color 0.25s 0.05s, color 0.25s 0.05s;
+}
+
+#header-search button:hover {
+	cursor: pointer;
+	color: #4080C0;
+}
+
+#header-search button:active {
+	color: red;
+	transition: none;
+}

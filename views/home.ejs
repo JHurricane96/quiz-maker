@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Home</title>
+		<link rel="stylesheet" href="/stylesheets/container.css" />
+		<link rel="stylesheet" href="/stylesheets/header.css" />
+		<link rel="stylesheet" href="/stylesheets/home.css" />
+		<script src="/javascripts/home.js"></script>
+	</head>
+	<body>
+		<%- include("header") %>
+		<div class="container">
+			<div class="container-header">
+				<h1>Greetings, <%= username %>!</h1>
+			</div>
+			<div class="container-body">
+				<h1>Welcome to Quiz Maker!</h1><br />
+				<div class="container-point">
+					<h2>Make questions!</h2>
+					Quiz Maker provides you an opportunity to design and post questions on various themes.
+				</div><br /><br />
+				<div class="container-point">
+					<h2>Increase your score!</h2>
+					Win points by answering questions posted by other users. Be cautious - an incorrect answer will fetch you negative marks!
+				</div><br /><br />
+				<div class="container-point">
+					<h2>Compete with your friends!</h2>
+					The leaderboard lets you know exactly where you stand.
+				</div><br /><br />
+				<div class="container-point">
+					<h2>Do what you like!</h2>
+					All questions are categorized into various themes. Don't like sports? Fear not, for there are other categories to distinguish yourself in!
+				</div><br /><br />
+			</div>
+		</div>
+	</body>
+</html>

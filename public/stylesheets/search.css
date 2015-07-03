@@ -1,0 +1,19 @@
+html, body {
+	padding: 0;
+	margin: 0;
+	background-image: url("/images/red-blue.jpg");
+	font-family: fantasy;
+}
+
+.container {
+	margin: 40px auto;
+	width: 90%;
+}
+
+.container h1 {
+	font-weight: 100;
+}
+
+.container-body {
+	padding-bottom: 40px;
+}

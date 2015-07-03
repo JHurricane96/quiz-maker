@@ -1,0 +1,27 @@
+html, body {
+	background-attachment: fixed;
+}
+
+.container {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.container-header {
+	text-align: center;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	color: #CCCCCC;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	width: 100%;
+	background-color: rgba(40, 40, 40, 0.85);
+}
+
+.container-body {
+	border: 1px solid rgba(0, 0, 0, 0);
+	color: #CCCCCC;
+	background-color: rgba(0, 0, 0, 0.25);
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}

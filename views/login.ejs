@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Welcome!</title>
+		<link rel="stylesheet" href="/stylesheets/container.css" />
+		<link rel="stylesheet" href="/stylesheets/form.css" />
+		<link rel="stylesheet" href="/stylesheets/login.css" />
+		<script src="/javascripts/animate.js"></script>
+		<script src="/javascripts/login.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="container-header">
+				<h1>Welcome to Quiz Maker!</h1>
+			</div>
+			<div class="container-body">
+				<form id="login" action="/login/submit" method="post">
+					<br />
+					<div><label class="form-left">Username:</label><input type="text" name="username" class="form-right"></input></div><br />
+					<div><label class="form-left">Password:</label><input type="password" name="password" class="form-right"></input></div><br />
+					<button type="submit">Log In</button>
+				</form>
+				<form id="register" action="register/submit" method="post">
+					<br />
+					<div><label class="form-left">Name:</label><input type="text" name="name" class="form-right"></input></div><br />
+					<div><label class="form-left">Username:</label><input type="text" name="username" class="form-right"></input></div><br />
+					<div><label class="form-left">Password:</label><input type="password" name="password" class="form-right"></input></div><br />
+					<div><label class="form-left">Confirm password:</label><input type="password" class="form-right"></input></div><br />
+					<button type="submit">Register</button>
+				</form>
+			</div>
+		</div>
+		<div id="show-register" class="container-plain">
+			Don't have an ID?<br />
+			<button>Register!</button>
+		</div>
+		<div id="show-login" class="container-plain">
+			Have an ID?<br />
+			<button>Log In!</button>
+		</div>
+	</body>
+</html>
