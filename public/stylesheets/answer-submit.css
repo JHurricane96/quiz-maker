@@ -15,10 +15,13 @@ html, body {
 }
 
 .container-body {
-	padding-bottom: 40px;
+	padding: 20px 40px 60px 100px;
 }
 
-#question {
-	vertical-align: top;
-	margin-top: 10px;
+h2 {
+	font-weight: 100;
+}
+
+h3 {
+	font-weight: 100;
 }

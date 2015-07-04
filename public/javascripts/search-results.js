@@ -13,6 +13,7 @@ function main() {
 					moreButton.style.display = "none";
 					newInfo.pop();
 				}
+				console.log(newInfo);
 				newDiv = makeDiv(newInfo);
 				var scrollY = pageYOffset;
 				console.log(scrollY);

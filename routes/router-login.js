@@ -86,6 +86,7 @@ router.post("/register/submit", function (req, res, next) {
 });
 
 function verifyRegister(data, callback) {
+	data.score = 0;
 	data.questions = [];
 	data.answeredQuestions = [];
 	callback("", data);

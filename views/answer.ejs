@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF=8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Question</title>
+		<link rel="stylesheet" href="/stylesheets/header.css" />
+		<link rel="stylesheet" href="/stylesheets/container.css" />
+		<link rel="stylesheet" href="/stylesheets/form-extra.css" />
+		<link rel="stylesheet" href="/stylesheets/answer.css" />
+	</head>
+	<body>
+		<%- include("header") %>
+		<div class="container">
+			<div class="container-header">
+				<h1>Question</h1>
+			</div>
+			<div class="container-body">
+				<br />
+				<form action=<%= "answer/submit/" + _id %>>
+					<h2><%= question %></h2><br />
+					<div><label class="form-left">A:</label><input type="radio" name="answer" value="A" required> <%= choiceA %></input></div><br />
+					<div><label class="form-left">B:</label><input type="radio" name="answer" value="B" required> <%= choiceB %></input></div><br />
+					<div><label class="form-left">C:</label><input type="radio" name="answer" value="C" required> <%= choiceC %></input></div><br />
+					<div><label class="form-left">D:</label><input type="radio" name="answer" value="D" required> <%= choiceD %></input></div><br /><br />
+					<button type="sumbmit" class="button">Submit</button>
+				</form>
+				<br />
+			</div>
+		</div>
+	</body>
+</html>

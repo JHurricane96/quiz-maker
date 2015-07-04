@@ -92,7 +92,9 @@ router.get("/search/:category/:difficulty", function (req, res, next) {
 					req.session.searchPage.push(String(question._id));
 					req.session.save();
 				});
-				if (qFound.length < itemsPerRequest)
+				if (!qFound)
+					var qFound = [true];
+				else if (qFound.length < itemsPerRequest)
 					qFound[qFound.length] = true;
 				if (!req.query.more)
 					res.render("search-results", {"questions": qFound});
@@ -103,10 +105,63 @@ router.get("/search/:category/:difficulty", function (req, res, next) {
 	});
 });
 
+router.get("/answer", function (req, res, next) {
+	if (!req.query)
+		return next(new Error("Improper query"));
+	if (!req.query.id)
+		return next(new Error("Improper query"));
+	db = initdb.db();
+	qColl = db.collection("questions");
+	qColl.findOne({"_id": new ObjectID(req.query.id)}, function (err, data) {
+		if (err)
+			return next(err);
+		if (!data)
+			return next(new Error("Question does not exist"));
+		res.render("answer", data);
+	});
+});
+
+router.get("/answer/submit/:id", function (req, res, next) {
+	if (!req.query)
+		return next(new Error("No answer"));
+	if (!req.query.answer)
+		return next(new Error("No answer"));
+	db = initdb.db();
+	qColl = db.collection("questions");
+	qColl.findOne({"_id": new ObjectID(req.params.id)}, function (err, data) {
+		if (err)
+			return next(err);
+		if (!data)
+			return next(new Error("Question with this id does not exist"));
+		usersColl = db.collection("users");
+		usersColl.findOne({"username": req.session.username}, {"score": true, "answeredQuestions": true}, function (err, userData) {
+			if (err)
+				return next(err);
+			if (new RegExp(req.params.id).test(userData.answeredQuestions.join(" ")))
+				return res.send("You've already answered this question");
+			userData.answeredQuestions.push(new ObjectID(req.params.id));
+			if (data.correctAnswer == req.query.answer) {
+				res.render("answer-submit", {"message": "Congratulations, your answer was correct!", "score": userData.score + 1});
+				usersColl.update({"username": req.session.username}, {$set: {"answeredQuestions": userData.answeredQuestions}, $inc: {"score": 1}});
+			}
+			else {
+				res.render("answer-submit", {
+					"message": "Oops, it looks like you chose the wrong answer!",
+					"correctChoice": data.correctAnswer,
+					"correctAnswer": data["choice" + data.correctAnswer],
+					"score": userData.score - 1
+				});
+				usersColl.update({"username": req.session.username}, {$set: {"answeredQuestions": userData.answeredQuestions}, $inc: {"score": -1}});
+			}
+		});
+	});
+});
+
 function validateNewQuestion(data, callback) {
 	data["upvotes"] = 0;
 	data["downvotes"] = 0;
-	data["usersVoted"] = [];
+	data["usersVotedUp"] = [];
+	data["usersVotedDown"] = [];
 	callback("", data);
 }
 

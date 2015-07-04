@@ -18,12 +18,11 @@ Usage
 -----
 
 The application runs on port 3000. If the files are on your machine, `localhost:3000/login` will get you to the login and
-registration screen. Create an account and use the application. Right now, only posting and viewing other users' questions is supported.
-Therefore the enjoyment one can extract from this is severely limited (as of now).
+registration screen. Create an account and use the application. As of now, only the Make and Advanced search links work in
+the navbar.
 
 Things to do
 ------------
 
 * Sanitize input properly.
-* Add links to searches.
 * Refine search.

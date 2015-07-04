@@ -20,9 +20,9 @@
 			<div class="container-body">
 				<br />
 				<% questions.forEach(function (question) { %>
-					<p><%= question.question %><p><br />
+					<a href= <%= "/home/answer?id=" + question._id %> ><p><%= question.question %><p><br /></a>
 				<% }) %>
-				<button id="more" class="button">Moar</button>
+				<button id="more" class="button">More</button>
 			</div>
 		</div>
 	</body>

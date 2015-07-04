@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Search</title>
+		<link rel="stylesheet" href="/stylesheets/header.css" />
+		<link rel="stylesheet" href="/stylesheets/container.css" />
+		<link rel="stylesheet" href="/stylesheets/answer-submit.css" />
+	</head>
+	<body>
+		<%- include("header") %>
+		<div class="container">
+			<div class="container-header">
+				<h1><%= message %></h1>
+			</div>
+			<div class="container-body">
+				<br />
+				<% if (message == "Oops, it looks like you chose the wrong answer!") { %>
+					<h2>The correct answer:</h2>
+					<p><%= correctChoice + ": " + correctAnswer %>
+				<% } %>
+				<p>Your score: <%= score %></p>
+			</div>
+		</div>
+	</body>
+</html>
