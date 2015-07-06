@@ -5,6 +5,7 @@ router = express.Router();
 
 var categories = ["sports", "video games", "science", "literature", "movies and shows", "all"];
 var itemsPerRequest = 10;
+var usersPerRequest = 10;
 
 router.get("/*", function (req, res, next) {
 	if (req.session.login != "Logged in")
@@ -96,9 +97,9 @@ router.get("/search/:category/:difficulty", function (req, res, next) {
 					var qFound = [true];
 				else if (qFound.length < itemsPerRequest)
 					qFound[qFound.length] = true;
-				if (!req.query.more)
+				if (req.query.more != "true")
 					res.render("search-results", {"questions": qFound});
-				else
+				else if (req.query.more == "true")
 					res.send(JSON.stringify(qFound));
 			});
 		});
@@ -152,6 +153,45 @@ router.get("/answer/submit/:id", function (req, res, next) {
 					"score": userData.score - 1
 				});
 				usersColl.update({"username": req.session.username}, {$set: {"answeredQuestions": userData.answeredQuestions}, $inc: {"score": -1}});
+			}
+		});
+	});
+});
+
+router.get("/leaderboard/ranks", function (req, res, next) {
+	db = initdb.db();
+	usersColl = db.collection("users");
+	usersColl.findOne({"username": req.session.username}, function (err, curUserData) {
+		if (err)
+			return next(err);
+		usersColl.count({"score": {$gte: curUserData.score}, "username": {$nin: [curUserData.username]}}, {"sort": [["score", "desc"], ["username", "asc"]]}, function (err, curUserRank) {
+			//res.render("leaderboard", {"curUserScore": curUserData.score, "curUserRank": ++curUserRank});
+			if (req.query.more == "true") {
+				if (/^[0-9]*$/.test(req.query.lastscore) && req.query.lastname) {
+					var last = parseInt(req.query.lastscore, 10);
+					usersColl.find({"score": {$lte: last}, "username": {$nin: [req.query.lastname]}}, {"sort": [["score", "desc"], ["username", "asc"]], "limit": usersPerRequest}).toArray(function (err, userData) {
+						if (err)
+							return next(err);
+						if (!userData)
+							var userData = [true];
+						else if (userData.length < usersPerRequest)
+							userData.push(true);
+						console.log(userData);
+						res.send(userData);
+					});
+				}
+			}
+			else if (req.query.more != "true") {
+				usersColl.find({}, {"score": true, "username": true}, {"sort": [["score", "desc"], ["username", "asc"]], "limit": usersPerRequest}).toArray(function (err, userData) {
+					if (err)
+						return next(err);
+					res.render("leaderboard", {
+						"curUsername": req.session.username,
+						"curUserScore": curUserData.score,
+						"curUserRank": curUserRank + 1,
+						"users": userData
+					});
+				});
 			}
 		});
 	});

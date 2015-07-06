@@ -13,11 +13,9 @@ function main() {
 					moreButton.style.display = "none";
 					newInfo.pop();
 				}
-				console.log(newInfo);
 				newDiv = makeDiv(newInfo);
 				var scrollY = pageYOffset;
-				console.log(scrollY);
-				container.insertBefore(newDiv, container.childNodes[container.childNodes.length - 1]);
+				container.insertBefore(newDiv, moreButton);
 				window.scrollTo(0, scrollY);
 			}
 		});
@@ -29,9 +27,17 @@ function main() {
 
 function makeDiv(questions) {
 	var newDiv = document.createElement("div");
-	newDiv.innerHTML = "<br />"
 	questions.forEach(function (question) {
-		newDiv.innerHTML += "<p>" + question.question + "</p><br />";
+		//newDiv.innerHTML += "<p><a href=/home/answer?id=" + question._id + " data-hover=\"" + question.question + "\" target=_blank>" + question.question + "</a></p><br />";
+		var newPar = document.createElement("p");
+		var newA = document.createElement("a");
+		newA.setAttribute("href", "/home/answer?id=" + question._id);
+		newA.setAttribute("data-hover", question.question);
+		newA.setAttribute("target", "_blank");
+		newA.innerHTML = question.question
+		newPar.appendChild(newA);
+		newDiv.appendChild(newPar);
+		newDiv.innerHTML += "<br />"
 	});
 	return newDiv;
 }

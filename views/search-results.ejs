@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="/stylesheets/form.css" />
 		<link rel="stylesheet" href="/stylesheets/form-extra.css" />
 		<link rel="stylesheet" href="/stylesheets/search-results.css" />
+		<link rel="stylesheet" href="/stylesheets/link.css" />
 		<script src="/javascripts/search-results.js"></script>
 	</head>
 	<body>
@@ -18,9 +19,9 @@
 				<h1>Search results</h1>
 			</div>
 			<div class="container-body">
-				<br />
+				<br /><br />
 				<% questions.forEach(function (question) { %>
-					<a href= <%= "/home/answer?id=" + question._id %> ><p><%= question.question %><p><br /></a>
+					<p><a href= <%= "/home/answer?id=" + question._id %> data-hover= "<%= question.question %>" target="_blank"><%= question.question %></a></p><br />
 				<% }) %>
 				<button id="more" class="button">More</button>
 			</div>

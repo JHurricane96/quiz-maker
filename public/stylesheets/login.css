@@ -1,8 +1,6 @@
 html, body {
 	padding: 0;
 	background-image: url("/images/orange.jpg");
-	//font-family: "Trebuchet MS", Helvetica, sans-serif;
-	font-family: fantasy;
 	font-size: 1.05em;
 }
 
@@ -67,4 +65,8 @@ button:active {
 
 #show-login {
 	display: none;
+}
+
+form {
+	text-align: left;
 }

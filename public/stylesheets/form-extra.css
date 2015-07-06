@@ -51,7 +51,7 @@ button.button {
 	border-radius: 4px;
 	padding: 5px;
 	font-size: 0.95em;
-	font-family: fantasy;
+	font-family: "Ubuntu";
 	color: #CCCCCC;
 	transition: background-color 0.15s 0.05s;
 }

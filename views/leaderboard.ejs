@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Leaderboard</title>
+		<link rel="stylesheet" href="/stylesheets/container.css" />
+		<link rel="stylesheet" href="/stylesheets/header.css" />
+		<link rel="stylesheet" href="/stylesheets/leaderboard.css" />
+		<link rel="stylesheet" href="/stylesheets/form-extra.css" />
+		<script>
+			var lastRankScore = <%= users[users.length - 1].score %>;
+			var lastRankName = "<%= users[users.length - 1].username %>";
+			var userCount = <%= users.length %>;
+			var curUsername = "<%= curUsername %>";
+		</script>
+		<script src="/javascripts/leaderboard.js"></script>
+	</head>
+	<body>
+		<%- include("header") %>
+		<div class="container">
+			<div class="container-header">
+				<h1>The Leaderboard</h1>
+			</div>
+			<div class="container-body">
+				<br /><br />
+				<ol>
+					<li id="your-rank" class="container-rank">
+						<%= curUserRank %>. You: <%= curUserScore %>
+					</li>
+				</ol>
+				<ol id="board">
+					<% for (var i = 0; i < users.length; ++i) { %>
+						<div class="container-rank"><li><%= +i+1 +  ". " + users[i].username + ": " + users[i].score %></li></div>
+					<% } %>
+				</ol>
+			</div>
+		</div>
+	</body>
+</html>	

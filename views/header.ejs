@@ -1,11 +1,11 @@
-<div id="header">
-	<a href="/home/make"tabindex="-1"><button class="header-button">Make</button></a>
-	<button class="header-button">History</button>
-	<button class="header-button">Scores</button>
-	<button class="header-button">Yours</button>
-	<a href="/logout" tabindex="-1"><button class="header-button">Log out</button></a>
+<nav id="header">
+	<a title="Make questions!" class="header-link" href="/home/make" tabindex="-1"><span class="header-button">Make</span></a>
+	<a class="header-link" tabindex="-1"><span class="header-button">History</span></a>
+	<a href="/home/leaderboard/ranks" class="header-link" tabindex="-1"><span class="header-button">Scores</span></a>
+	<a title="Your own questions" class="header-link" tabindex="-1"><span class="header-button">Yours</span></a>
+	<a title="Log out" class="header-link" href="/logout" tabindex="-1"><span class="header-button">Log out</span></a>
 	<div id="header-search">
-		<form><input value="Search" type="search"></input> <input id="search-submit" type="image" src="/images/search.png"></input></form>
+		<form><input placeholder="Search" type="search"></input> <input id="search-submit" type="image" src="/images/search.png"></input></form>
 		<a href="/home/search" tabindex="-1"><button>Advanced search</button></a>
 	</div>
-</div>
+</nav>

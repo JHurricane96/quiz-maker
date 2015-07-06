@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="/stylesheets/container.css" />
 		<link rel="stylesheet" href="/stylesheets/header.css" />
 		<link rel="stylesheet" href="/stylesheets/home.css" />
+		<link rel="stylesheet" href="/stylesheets/link.css" />
 	</head>
 	<body>
 		<%- include("header") %>
@@ -18,15 +19,15 @@
 				<h1>Welcome to Quiz Maker!</h1><br />
 				<div class="container-point">
 					<h2>Make questions!</h2>
-					Quiz Maker provides you an opportunity to design and post questions on various themes.
+					Quiz Maker provides you an opportunity to <a href="home/make" data-hover="design and post questions">design and post questions</a> on various themes.
 				</div><br /><br />
 				<div class="container-point">
 					<h2>Increase your score!</h2>
-					Win points by answering questions posted by other users. Be cautious - an incorrect answer will fetch you negative marks!
+					Win points by <a href="/home/search" data-hover="answering questions">answering questions</a> posted by other users. Be cautious - an incorrect answer will fetch you negative marks!
 				</div><br /><br />
 				<div class="container-point">
 					<h2>Compete with your friends!</h2>
-					The leaderboard lets you know exactly where you stand.
+					The <a href="/home/leaderboard/ranks" data-hover="leaderboard">leaderboard</a> lets you know exactly where you stand.
 				</div><br /><br />
 				<div class="container-point">
 					<h2>Do what you like!</h2>

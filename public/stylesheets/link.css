@@ -1,0 +1,32 @@
+.container-body a {
+	position: relative;
+	color: #F4A460;
+	font-style: none;
+	text-decoration: none;
+}
+
+.container-body a:visited {
+	color: #F08080;
+}
+
+.container-body a:hover {
+	top: 1px;
+}
+
+.container-body a::before {
+	position: absolute;
+	white-space: nowrap;
+	display: block;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	max-width: 0;
+	border-bottom: 2px solid #fff;
+	color: white;
+	content: attr(data-hover);
+	transition: max-width 0.1s 0.05s;
+}
+
+.container-body a:hover::before {
+	max-width: 100%
+}

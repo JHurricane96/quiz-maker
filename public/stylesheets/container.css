@@ -1,5 +1,9 @@
 html, body {
+	margin: 0;
+	padding: 0;
+	background-image: url("/images/red-blue.jpg");
 	background-attachment: fixed;
+	font-family: "Ubuntu";
 }
 
 .container {

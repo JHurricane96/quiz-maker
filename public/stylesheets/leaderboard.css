@@ -1,0 +1,28 @@
+.container {
+	margin: 40px auto;
+	width: 90%;
+}
+
+.container h1 {
+	font-weight: 100;
+}
+
+.container-body {
+	padding-bottom: 40px;
+}
+
+#your-rank {
+	border-color: red;
+}
+
+.container-rank {
+	list-style: none;
+	box-sizing: border-box;
+	margin: 5px auto;
+	padding: 20px 40px;
+	width: 85%;
+	border: 1px solid rgba(40, 40, 40, 0.85);
+	border-radius: 4px;
+	background-color: rgba(40, 40, 40, 0.3);
+	font-size: 1.4em;
+}
