@@ -26,4 +26,3 @@ Things to do
 
 * Sanitize input properly.
 * Refine search.
-* Fix bug with ranking users with same score.
