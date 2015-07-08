@@ -5,7 +5,7 @@ router = express.Router();
 
 var categories = ["sports", "video games", "science", "literature", "movies and shows", "all"];
 var itemsPerRequest = 10;
-var usersPerRequest = 10;
+var usersPerRequest = 11;
 
 router.get("/*", function (req, res, next) {
 	if (req.session.login != "Logged in")
@@ -164,19 +164,18 @@ router.get("/leaderboard/ranks", function (req, res, next) {
 	usersColl.findOne({"username": req.session.username}, function (err, curUserData) {
 		if (err)
 			return next(err);
-		usersColl.count({"score": {$gte: curUserData.score}, "username": {$nin: [curUserData.username]}}, {"sort": [["score", "desc"], ["username", "asc"]]}, function (err, curUserRank) {
-			//res.render("leaderboard", {"curUserScore": curUserData.score, "curUserRank": ++curUserRank});
+		usersColl.count({"score": {$gt: curUserData.score}}, function (err, curUserRank) {
 			if (req.query.more == "true") {
-				if (/^[0-9]*$/.test(req.query.lastscore) && req.query.lastname) {
+				if (/^-?[0-9]*$/.test(req.query.lastscore) && req.query.lastnames) {
 					var last = parseInt(req.query.lastscore, 10);
-					usersColl.find({"score": {$lte: last}, "username": {$nin: [req.query.lastname]}}, {"sort": [["score", "desc"], ["username", "asc"]], "limit": usersPerRequest}).toArray(function (err, userData) {
+					var lastnames = req.query.lastnames.split(" ");
+					usersColl.find({"score": {$lte: last}, "username": {$nin: lastnames}}, {"sort": [["score", "desc"]], "limit": usersPerRequest}).toArray(function (err, userData) {
 						if (err)
 							return next(err);
 						if (!userData)
 							var userData = [true];
 						else if (userData.length < usersPerRequest)
-							userData.push(true);
-						console.log(userData);
+							userData[userData.length] = true;
 						res.send(userData);
 					});
 				}

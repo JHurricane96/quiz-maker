@@ -11,8 +11,8 @@
 		<script>
 			var lastRankScore = <%= users[users.length - 1].score %>;
 			var lastRankName = "<%= users[users.length - 1].username %>";
-			var userCount = <%= users.length %>;
 			var curUsername = "<%= curUsername %>";
+			var firstUsers = <%- JSON.stringify(users) %>;
 		</script>
 		<script src="/javascripts/leaderboard.js"></script>
 	</head>
@@ -30,8 +30,17 @@
 					</li>
 				</ol>
 				<ol id="board">
+					<% var rankCount = 0, sameRankCount = 0, sameRankScore %>
 					<% for (var i = 0; i < users.length; ++i) { %>
-						<div class="container-rank"><li><%= +i+1 +  ". " + users[i].username + ": " + users[i].score %></li></div>
+						<div class="container-rank"><li>
+							<% if (sameRankScore != users[i].score) { %>
+								<% rankCount += sameRankCount + 1 %>
+								<% sameRankScore = users[i].score %>
+								<% sameRankCount = 0 %>
+							<% } else { %>
+								<% sameRankCount++ } %>
+							<%= rankCount + ". " + users[i].username + ": " + users[i].score %>
+						</li></div>
 					<% } %>
 				</ol>
 			</div>
