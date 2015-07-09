@@ -75,7 +75,7 @@ router.get("/search/:category/:difficulty", function (req, res, next) {
 			var ownQuestions = userData.questions;
 			var answeredQuestions = userData.answeredQuestions || [];
 			var options = {
-				"sort": [["upvotes", "desc"]],
+				"sort": [["votes", "desc"]],
 				"limit": itemsPerRequest
 			};
 			var searchedPages = [];
@@ -86,7 +86,7 @@ router.get("/search/:category/:difficulty", function (req, res, next) {
 					searchedPages.push(ObjectID(id));
 				});
 			}
-			qColl.find({"category": category, "difficulty": difficulty, "_id": { $nin: answeredQuestions.concat(ownQuestions, searchedPages) }}, {"question": true}, options).toArray(function (err, qFound) {
+			qColl.find({"category": category, "difficulty": difficulty, "_id": { $nin: answeredQuestions.concat(ownQuestions, searchedPages) }}, {"question": true, "votes": true, "difficulty": true}, options).toArray(function (err, qFound) {
 				if (err)
 					return next(err);
 				qFound.forEach(function (question) {
@@ -129,10 +129,10 @@ router.get("/answer/submit/:id", function (req, res, next) {
 		return next(new Error("No answer"));
 	db = initdb.db();
 	qColl = db.collection("questions");
-	qColl.findOne({"_id": new ObjectID(req.params.id)}, function (err, data) {
+	qColl.findOne({"_id": new ObjectID(req.params.id)}, function (err, qData) {
 		if (err)
 			return next(err);
-		if (!data)
+		if (!qData)
 			return next(new Error("Question with this id does not exist"));
 		usersColl = db.collection("users");
 		usersColl.findOne({"username": req.session.username}, {"score": true, "answeredQuestions": true}, function (err, userData) {
@@ -141,20 +141,71 @@ router.get("/answer/submit/:id", function (req, res, next) {
 			if (new RegExp(req.params.id).test(userData.answeredQuestions.join(" ")))
 				return res.send("You've already answered this question");
 			userData.answeredQuestions.push(new ObjectID(req.params.id));
-			if (data.correctAnswer == req.query.answer) {
-				res.render("answer-submit", {"message": "Congratulations, your answer was correct!", "score": userData.score + 1});
+			if (qData.correctAnswer == req.query.answer) {
+				res.render("answer-submit", {
+					"message": "Congratulations, your answer was correct!",
+					"qId": qData._id,
+					"score": userData.score + 1,
+					"upvotes": qData.upvotes,
+					"downvotes": qData.downvotes
+				});
 				usersColl.update({"username": req.session.username}, {$set: {"answeredQuestions": userData.answeredQuestions}, $inc: {"score": 1}});
 			}
 			else {
 				res.render("answer-submit", {
 					"message": "Oops, it looks like you chose the wrong answer!",
-					"correctChoice": data.correctAnswer,
-					"correctAnswer": data["choice" + data.correctAnswer],
-					"score": userData.score - 1
+					"qId": qData._id,
+					"correctChoice": qData.correctAnswer,
+					"correctAnswer": qData["choice" + qData.correctAnswer],
+					"score": userData.score - 1,
+					"upvotes": qData.upvotes,
+					"downvotes": qData.downvotes
 				});
 				usersColl.update({"username": req.session.username}, {$set: {"answeredQuestions": userData.answeredQuestions}, $inc: {"score": -1}});
 			}
 		});
+	});
+});
+
+router.post("/upvote", function (req, res, next) {
+	db = initdb.db();
+	if (!req.query.id)
+		return next(new Error("Id necessary"));
+	qColl = db.collection("questions");
+	qColl.findOne({"_id": new ObjectID(req.query.id)}, function (err, qData) {
+		if (err)
+			return next(err);
+		if (!req.query.revote) {
+			if (qData.usersVotedUp.indexOf(req.session.username) != -1 || qData.usersVotedDown.indexOf(req.session.username) != -1)
+				return next(new Error("Already voted"));
+			qData.usersVotedUp.push(req.session.username);
+			qColl.update({"_id": qData._id}, {$set: {"usersVotedUp": qData.usersVotedUp}, $inc: {"upvotes": 1, "votes": 1}}, function (err) {
+				if (err)
+					return next(err);
+				res.send("Upvoted");
+			});
+		}
+	});
+});
+
+router.post("/downvote", function (req, res, next) {
+	db = initdb.db();
+	if (!req.query.id)
+		return next(new Error("Id necessary"));
+	qColl = db.collection("questions");
+	qColl.findOne({"_id": new ObjectID(req.query.id)}, function (err, qData) {
+		if (err)
+			return next(err);
+		if (!req.query.revote) {
+			if (qData.usersVotedUp.indexOf(req.session.username) != -1 || qData.usersVotedDown.indexOf(req.session.username) != -1)
+				return next(new Error("Already voted"));
+			qData.usersVotedDown.push(req.session.username);
+			qColl.update({"_id": qData._id}, {$set: {"usersVotedUp": qData.usersVotedDown}, $inc: {"downvotes": 1, "votes": -1}}, function (err) {
+				if (err)
+					return next(err);
+				res.send("Downvoted");
+			});
+		}
 	});
 });
 
@@ -199,6 +250,7 @@ router.get("/leaderboard/ranks", function (req, res, next) {
 function validateNewQuestion(data, callback) {
 	data["upvotes"] = 0;
 	data["downvotes"] = 0;
+	data["votes"];
 	data["usersVotedUp"] = [];
 	data["usersVotedDown"] = [];
 	callback("", data);

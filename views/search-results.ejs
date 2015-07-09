@@ -21,7 +21,18 @@
 			<div class="container-body">
 				<br /><br />
 				<% questions.forEach(function (question) { %>
-					<p><a href= <%= "/home/answer?id=" + question._id %> data-hover= "<%= question.question %>" target="_blank"><%= question.question %></a></p><br />
+					<p><a href= <%= "/home/answer?id=" + question._id %> data-hover= "<%= question.question %>" target="_blank"><%= question.question %></a></p>
+					<p class="container-extra-question">Votes: <%= question.votes %></p>
+					<p class="container-extra-question">Difficulty: 
+						<% if (question.difficulty == 1) { %>
+							&#x2605;&#x2606;&#x2606;
+						<% } else if (question.difficulty == 2) { %>
+							&#x2605;&#x2605;&#x2606;
+						<% } else { %>
+							&#x2605;&#x2605;&#x2605;
+						<% } %>
+					</p>
+					<br />
 				<% }) %>
 				<button id="more" class="button">More</button>
 			</div>

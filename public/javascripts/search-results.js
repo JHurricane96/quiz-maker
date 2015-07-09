@@ -29,14 +29,27 @@ function makeDiv(questions) {
 	var newDiv = document.createElement("div");
 	questions.forEach(function (question) {
 		//newDiv.innerHTML += "<p><a href=/home/answer?id=" + question._id + " data-hover=\"" + question.question + "\" target=_blank>" + question.question + "</a></p><br />";
-		var newPar = document.createElement("p");
+		var newParQuestion = document.createElement("p");
+		var newParVotes = document.createElement("p");
+		var newParDifficulty = document.createElement("p");
 		var newA = document.createElement("a");
 		newA.setAttribute("href", "/home/answer?id=" + question._id);
 		newA.setAttribute("data-hover", question.question);
 		newA.setAttribute("target", "_blank");
-		newA.innerHTML = question.question
-		newPar.appendChild(newA);
-		newDiv.appendChild(newPar);
+		newA.innerHTML = question.question;
+		newParVotes.innerHTML = "Votes: " + question.votes;
+		newParDifficulty.innerHTML = "Difficulty: ";
+		if (question.difficulty == 1)
+			newParDifficulty.innerHTML += "\u2605\u2606\u2606";
+		else if (question.difficulty == 2)
+			newParDifficulty.innerHTML += "\u2605\u2605\u2606";
+		else
+			newParDifficulty.innerHTML += "\u2605\u2605\u2605";
+		newParVotes.className = newParDifficulty.className = "container-extra-question";
+		newParQuestion.appendChild(newA);
+		newDiv.appendChild(newParQuestion);
+		newDiv.appendChild(newParVotes);
+		newDiv.appendChild(newParDifficulty);
 		newDiv.innerHTML += "<br />"
 	});
 	return newDiv;

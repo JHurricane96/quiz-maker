@@ -7,6 +7,10 @@
 		<link rel="stylesheet" href="/stylesheets/header.css" />
 		<link rel="stylesheet" href="/stylesheets/container.css" />
 		<link rel="stylesheet" href="/stylesheets/answer-submit.css" />
+		<script>
+			var qId = "<%= qId %>";
+		</script>
+		<script src="/javascripts/answer-submit.js"></script>
 	</head>
 	<body>
 		<%- include("header") %>
@@ -21,6 +25,7 @@
 					<p><%= correctChoice + ": " + correctAnswer %>
 				<% } %>
 				<p>Your score: <%= score %></p>
+				<p id="vote-area"><button id="upvote" class="vote">^</button> <span id="upvotes"><%= upvotes %></span> <button id="downvote" class="vote">v</button> <span id="downvotes"><%= downvotes %></span> </p>
 			</div>
 		</div>
 	</body>

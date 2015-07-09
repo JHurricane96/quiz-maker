@@ -7,9 +7,11 @@
 	"correctAnswer": "A",
 	"category": "science",
 	"difficulty": "1",
+	"votes": 0,
 	"upvotes": 0,
 	"downvotes": 0,
-	"usersVoted": []
+	"usersVotedUp": [],
+	"usersVotedDown": []
 },
 {
 	"question": "What is the color of night?",
@@ -20,9 +22,11 @@
 	"correctAnswer": "C",
 	"category": "video games",
 	"difficulty": "3",
+	"votes": 100,
 	"upvotes": 100,
 	"downvotes": 0,
-	"usersVoted": []
+	"usersVotedUp": [],
+	"usersVotedDown": []
 },
 {
 	"question": "Do you like Roger Federer?",
@@ -33,9 +37,11 @@
 	"correctAnswer": "A",
 	"category": "sports",
 	"difficulty": "1",
+	"votes": 90,
 	"upvotes": 90,
 	"downvotes": 0,
-	"usersVoted": []
+	"usersVotedUp": [],
+	"usersVotedDown": []
 },
 {
 	"question": "Is it wise to consume a gasconading sesquipedalian?",
@@ -46,9 +52,11 @@
 	"correctAnswer": "A",
 	"category": "science",
 	"difficulty": "3",
+	"votes": 1000,
 	"upvotes": 1000,
 	"downvotes": 0,
-	"usersVoted": []
+	"usersVotedUp": [],
+	"usersVotedDown": []
 },
 {
 	"question": "Does the appearance of a rainbow-colored flamingo have any signifance in the Hamlet?",
@@ -59,9 +67,11 @@
 	"correctAnswer": "C",
 	"category": "literature",
 	"difficulty": "2",
+	"votes": 10,
 	"upvotes": 10,
 	"downvotes": 0,
-	"usersVoted": []
+	"usersVotedUp": [],
+	"usersVotedDown": []
 },
 {
 	"question": "Is the Game of Thrones a show worth watching?",
@@ -72,9 +82,11 @@
 	"correctAnswer": "A",
 	"category": "movies and shows",
 	"difficulty": "2",
+	"votes": 20,
 	"upvotes": 20,
 	"downvotes": 0,
-	"usersVoted": []
+	"usersVotedUp": [],
+	"usersVotedDown": []
 },
 {
 	"question": "How old is Ash Ketchum?",
@@ -85,9 +97,11 @@
 	"correctAnswer": "A",
 	"category": "video games",
 	"difficulty": "2",
+	"votes": 85,
 	"upvotes": 85,
 	"downvotes": 0,
-	"usersVoted": []
+	"usersVotedUp": [],
+	"usersVotedDown": []
 },
 {
 	"question": "Does global warming exist?",
@@ -98,9 +112,11 @@
 	"correctAnswer": "B",
 	"category": "science",
 	"difficulty": "3",
+	"votes": 400,
 	"upvotes": 400,
 	"downvotes": 0,
-	"usersVoted": []
+	"usersVotedUp": [],
+	"usersVotedDown": []
 },
 {
 	"question": "Is Nadal on steriods?",
@@ -111,7 +127,9 @@
 	"correctAnswer": "A",
 	"category": "sports",
 	"difficulty": "1",
+	"votes": 40,
 	"upvotes": 40,
 	"downvotes": 0,
-	"usersVoted": []
+	"usersVotedUp": [],
+	"usersVotedDown": []
 }]
