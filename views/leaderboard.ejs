@@ -10,9 +10,9 @@
 		<link rel="stylesheet" href="/stylesheets/form-extra.css" />
 		<script>
 			var lastRankScore = <%= users[users.length - 1].score %>;
-			var lastRankName = "<%= users[users.length - 1].username %>";
 			var curUsername = "<%= curUsername %>";
 			var firstUsers = <%- JSON.stringify(users) %>;
+			var done = <%= done %>;
 		</script>
 		<script src="/javascripts/leaderboard.js"></script>
 	</head>

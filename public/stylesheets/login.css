@@ -29,6 +29,7 @@ h1 {
 }
 
 button {
+	font-family: Ubuntu;
 	display: block;
 	margin: auto;
 	border-radius: 4px;

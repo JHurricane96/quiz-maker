@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF=8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Question</title>
+		<link rel="stylesheet" href="/stylesheets/header.css" />
+		<link rel="stylesheet" href="/stylesheets/container.css" />
+		<link rel="stylesheet" href="/stylesheets/form-extra.css" />
+		<link rel="stylesheet" href="/stylesheets/history-question.css" />
+		<link rel="stylesheet" href="/stylesheets/answer-submit.css" />
+		<script>
+			var voteStatus = "<%= voteStatus %>";
+			var qId = "<%= _id %>";
+		</script>
+		<script src="/javascripts/history-question.js"></script>
+	</head>
+	<body>
+		<%- include("header") %>
+		<div class="container">
+			<div class="container-header">
+				<h1>Question</h1>
+			</div>
+			<div class="container-body">
+				<br />
+					<h2><%= question %></h2>
+					<p class="re-align"><span class="left option" class="option">A:</span> <span class="right"><%= choiceA %></span></p>
+					<p class="re-align"><span class="left option">B:</span> <span class="right"><%= choiceB %></span></p>
+					<p class="re-align"><span class="left option">C:</span> <span class="right"><%= choiceC %></span></p>
+					<p class="re-align"><span class="left option">D:</span> <span class="right"><%= choiceD %></span></p><br />
+					<p>Correct Answer: <span class="option"><%= correctAnswer %></span></p>
+					<p>Your answer: <span class="option"><%= userAnswer %></span></p>
+					<p id="vote-area"><button id="upvote" class="vote">&#x25B2;</button> <span id="upvotes"><%= upvotes %></span> <button id="downvote" class="vote">&#x25BC;</button> <span id="downvotes"><%= downvotes %></span> </p>
+			</div>
+		</div>
+	</body>
+</html>

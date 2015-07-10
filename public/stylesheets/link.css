@@ -24,7 +24,7 @@
 	border-bottom: 2px solid #fff;
 	color: white;
 	content: attr(data-hover);
-	transition: max-width 0.1s 0.05s;
+	transition: max-width 0.3s 0.05s;
 }
 
 .container-body a:hover::before {

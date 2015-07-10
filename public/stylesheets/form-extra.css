@@ -1,7 +1,7 @@
 .container-form textarea {
 	border-radius: 4px;
 	padding: 5px;
-	border: 1px solid #CCCCCC;
+	border: 1px solid #B08040;
 	height: 80px;
 	background-color: rgba(40, 40, 40, 0.3);
 	color: #CCCCCC;
@@ -11,7 +11,7 @@
 .container-form input {
 	border-radius: 4px;
 	padding: 3px;
-	border: 1px solid #CCCCCC;
+	border: 1px solid #B08040;
 	background-color: rgba(40, 40, 40, 0.3);
 	color: #CCCCCC;
 	transition: border 0.15s;
@@ -20,7 +20,7 @@
 .container-form select {
 	border-radius: 4px;
 	padding: 3px;
-	border: 1px solid #CCCCCC;
+	border: 1px solid #B08040;
 	background-color: rgba(40, 40, 40, 0.3);
 	color: #CCCCCC;
 	transition: border: 0.15s;

@@ -108,6 +108,10 @@
 }
 
 #search-submit {
+	background-color: transparent;
+	width: 20px;
+	background-image: url(/images/search.png);
+	background-size: 20px 20px;
 	vertical-align: middle;
 	display: inline-block;
 	height: 20px;
@@ -117,6 +121,7 @@
 
 #search-submit:hover {
 	position: relative;
+	cursor: pointer;
 	top: 1px;
 }
 

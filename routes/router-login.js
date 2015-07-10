@@ -89,6 +89,7 @@ function verifyRegister(data, callback) {
 	data.score = 0;
 	data.questions = [];
 	data.answeredQuestions = [];
+	data.answers = new Object();
 	callback("", data);
 }
 

@@ -49,7 +49,9 @@ function main() {
 	}
 
 	initSameRankFix();
-	window.addEventListener("scroll", loadRanks);
+
+	if (!done)
+		window.addEventListener("scroll", loadRanks);
 }
 
 function makeDiv(users) {

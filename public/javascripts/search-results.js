@@ -1,11 +1,15 @@
+var lastQuestions = [];
+var lastScore;
+
 function main() {
 	var moreButton = document.getElementById("more");
 	var container = document.querySelector(".container-body");
 	var counter = 1;
+	var curQuestionQuery = location.search.match(/question=([^&]*)/)[1];
 
 	function loadMore() {
 		var req = new XMLHttpRequest();
-		req.open("GET", "?more=true", true);
+		req.open("GET", "?more=true&lastscore=" + lastScore + "&lastquestions=" + lastQuestions.join("+") + "&question=" + curQuestionQuery, true);
 		req.addEventListener("load", function() {
 			if (req.status < 400) {
 				var newInfo = JSON.parse(req.responseText);
@@ -22,7 +26,24 @@ function main() {
 		req.send(null);
 	}
 
-	moreButton.addEventListener("click", loadMore);
+	function initSameScoreFix() {
+		firstQuestions.forEach(function (question) {
+			if (question.votes == lastScore) {
+				lastQuestions.push(question._id);
+			}
+			else {
+				lastScore = question.votes;
+				lastQuestions = [question._id];
+			}
+		});
+	}
+
+	initSameScoreFix();
+
+	if (!done)
+		moreButton.addEventListener("click", loadMore);
+	else
+		moreButton.style.display = "none";
 }
 
 function makeDiv(questions) {
@@ -50,7 +71,13 @@ function makeDiv(questions) {
 		newDiv.appendChild(newParQuestion);
 		newDiv.appendChild(newParVotes);
 		newDiv.appendChild(newParDifficulty);
-		newDiv.innerHTML += "<br />"
+		newDiv.innerHTML += "<br />";
+		if (question.votes == lastScore)
+			lastQuestions.push(question._id);
+		else {
+			lastScore = question.votes;
+			lastQuestions = [question._id];
+		}
 	});
 	return newDiv;
 }
