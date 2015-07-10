@@ -11,7 +11,8 @@ Build Instructions
 3. `cd` to the directory.
 4. Run `npm install` to install dependencies.
 5. Run `node initq.js` if you wish to have sample (albeit useless) questions to test.
-6. Run `node first-time.js` to set up a database.
+6. Run `node initu.js` if you wish to have sample (albeit unusable) users to test the leaderboard.
+6. Run `node first-time.js` to set up the database.
 7. Run `npm start` to start the site.
 
 Usage
@@ -19,10 +20,10 @@ Usage
 
 The application runs on port 3000. If the files are on your machine, `localhost:3000/login` will get you to the login and
 registration screen. Create an account and use the application. As of now, only the Make, Scores and Advanced search links work in
-the navbar.
+the navbar. The History link works, and is fairly usable, but not optimized. The search bar also works, and searches for unanswered questions.
 
 Things to do
 ------------
 
 * Sanitize input properly.
-* Refine search.
+* Refine history.
