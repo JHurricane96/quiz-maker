@@ -1,0 +1,47 @@
+#vote-area {
+	display: inline-block;
+	position: relative;
+}
+
+button.vote {
+	border: 0;
+	margin: 0;
+	font-size: 2em;
+	background-color: transparent;
+}
+
+#upvote, #downvote {
+	transition: color 0.15s 0.05s;
+}
+
+#upvote {
+	color: #2020FF;
+}
+
+#downvote {
+	color: #C02020;
+}
+
+#upvote:hover, #downvote:hover {
+	cursor: pointer;
+}
+
+#upvote:hover {
+	position: relative;
+	top: -1px;
+	color: #6060FF;
+}
+
+#downvote:hover {
+	position: relative;
+	top: 1px;
+	color: #FF8080;
+}
+
+#upvote:active {
+	top: -2px;
+}
+
+#downvote:active {
+	top: 2px;	
+}

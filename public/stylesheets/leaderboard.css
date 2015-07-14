@@ -8,11 +8,8 @@
 }
 
 .container-body {
+	text-align: center;
 	padding-bottom: 40px;
-}
-
-#your-rank {
-	border-color: red;
 }
 
 .container-rank {
@@ -20,14 +17,74 @@
 	box-sizing: border-box;
 	margin: 5px auto;
 	padding: 20px 40px;
-	width: 85%;
+	width: 80%;
 	border: 1px solid rgba(40, 40, 40, 0.85);
 	border-radius: 4px;
 	background-color: rgba(40, 40, 40, 0.3);
 	font-size: 1.4em;
 	transition: background-color 0.1s;
+	margin-bottom: 20px;
 }
 
 .container-rank:hover {
-	background-color: rgba(40, 40, 40, 0.45);;
+	background-color: rgba(40, 40, 40, 0.45);
+}
+
+#board #your-rank-first td{
+	border-bottom: 1px solid rgba(20, 20, 60, 0.5);
+}
+
+#board {
+	border-spacing: 0;
+	width: 70%;
+	text-align: center;
+	margin: auto;
+}
+
+#board th {
+	color: #CCCCCC;
+	background-color: rgba(40, 40, 40, 0.6);
+	font-size: 1.5em;
+	font-weight: 100;
+	padding: 20px;
+	margin: 0;
+	padding: 20px;
+}
+
+#board #rank-head {
+	border-top-left-radius: 4px;	
+}
+#board #score-head {
+	border-top-right-radius: 4px;
+}
+
+#board tr {
+	color: #BBBBBB;
+}
+
+#board tr#your-rank {
+	background-color: rgba(250, 160, 80, 0.3);
+}
+
+#board td {
+	padding: 25px 0;
+	font-size: 1.25em;
+	background-color: rgba(40, 40, 80, 0.2);
+}
+
+#board td:first-child {
+	font-size: 1.5em;
+}
+
+#board tr {
+	transition: background-color 0.15s 0.05s;
+}
+
+#board tr:hover {
+	background-color: rgba(40, 40, 40, 0.3);
+}
+
+#loading-text {
+	margin-top: 50px;
+	font-size: 1.5em;
 }

@@ -11,10 +11,8 @@
 		<link rel="stylesheet" href="/stylesheets/search-results.css" />
 		<link rel="stylesheet" href="/stylesheets/link.css" />
 		<script>
-			if (<%- JSON.stringify(questions) %>) {
-				var lastScore = <%= questions[questions.length - 1].votes %>;
-				var firstQuestions = <%- JSON.stringify(questions) %>;
-			}
+			var lastScore = <%= questions[questions.length - 1].votes %>;
+			var firstQuestions = <%- JSON.stringify(questions) %>;
 			var done = <%= done %>;
 		</script>
 		<script src="/javascripts/search-results.js"></script>
@@ -28,7 +26,7 @@
 			<div class="container-body">
 				<br /><br />
 				<% questions.forEach(function (question) { %>
-					<p><a href= <%= "/home/answer?id=" + question._id %> data-hover= "<%= question.question %>" target="_blank"><%= question.question %></a></p>
+					<p><a href= <%= "/home/yours?id=" + question._id %> data-hover= "<%= question.question %>" target="_blank"><%= question.question %></a></p>
 					<p class="container-extra-question">Votes: <%= question.votes %></p>
 					<p class="container-extra-question">Difficulty: 
 						<% if (question.difficulty == 1) { %>

@@ -39,3 +39,23 @@ p.re-align {
 	font-weight: bold;
 	font-size: 1.1em;
 }
+
+#confirm {
+	margin-top: 25px;
+}
+
+button.button {
+	display: inline;
+}
+
+#confirm-delete {
+	margin-right: 5px;
+}
+
+#reject-delete {
+	margin-left: 5px;
+}
+
+#confirm {
+	display: none;
+}

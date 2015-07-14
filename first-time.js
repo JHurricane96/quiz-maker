@@ -8,10 +8,15 @@ MongoClient.connect("mongodb://localhost:27017/quizMaker", function (err, db) {
 		if (err)
 			error(err);
 		console.log("Made users collection");
-		coll.ensureIndex({username: 1}, {unique: true}, function (err) {
+		coll.ensureIndex({"username": 1}, {unique: true}, function (err) {
 			if (err)
 				error(err);
 			console.log("Made username a unique field");
+		});
+		coll.ensureIndex({"score": -1}, function (err) {
+			if (err)
+				error(err);
+			console.log("Made score an index");
 		});
 	});
 	db.createCollection("questions", function (err, coll) {

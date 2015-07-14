@@ -7,6 +7,11 @@ function main() {
 	var registerForm = document.getElementById("register");
 	var fadeTime = 300;
 
+	var passwordInputsRegister = document.querySelectorAll("form#register input[type=\"password\"]");
+	var userNameRegister = document.querySelector("form#register input[name=\"username\"]");
+	var passwordInputLogin = document.querySelector("form#login input[type=\"password\"]");
+	var userNameLogin = document.querySelector("form#login input[name=\"username\"]");
+
 	function showRegisterForm() {
 		showRegisterPane.style.display = "none";
 		showLoginPane.style.display = "block";
@@ -37,7 +42,51 @@ function main() {
 		});
 	}
 
+	function validatePasswordRegister(event) {
+		if (event.target.validity.patternMismatch)
+			passwordInputsRegister[0].setCustomValidity("Only alphabets, numbers, underscores and periods are allowed");
+		else if (passwordInputsRegister[0].value != passwordInputsRegister[1].value)
+			passwordInputsRegister[1].setCustomValidity("Both passwords should be the same");
+		else {
+			passwordInputsRegister[0].setCustomValidity("");
+			passwordInputsRegister[1].setCustomValidity("");
+		}
+	}
+
+	function validateUserNameRegister(event) {
+		var userName = event.target.value;
+		if (event.target.validity.patternMismatch)
+			event.target.setCustomValidity("Only alphabets, numbers, underscores and periods are allowed");
+		else if (!event.target.validity.patternMismatch) {
+			event.target.setCustomValidity("");
+			var req = new XMLHttpRequest();
+			req.open("GET", "/check?username=" + userName, true);
+			req.addEventListener("load", function() {
+				if (req.status < 400) {
+					console.log("hey");
+					if (req.responseText == "Existing user exists")
+						event.target.setCustomValidity("This username has already been taken!");
+					else
+						event.target.setCustomValidity("");
+				}
+			});
+			req.send(null);
+		}
+	}
+
+	function validateLoginField(event) {
+		if (event.target.validity.patternMismatch)
+			event.target.setCustomValidity("Only alphabets, numbers, underscores and periods are allowed");
+		else
+			event.target.setCustomValidity("");
+	}
+
+	userNameRegister.addEventListener("keyup", validateUserNameRegister);
+	passwordInputsRegister[0].addEventListener("keyup", validatePasswordRegister);
+	passwordInputsRegister[1].addEventListener("keyup", validatePasswordRegister);
 	showRegisterButton.addEventListener("click", showRegisterForm);
+	userNameLogin.addEventListener("keyup", validateLoginField);
+	passwordInputLogin.addEventListener("keyup", validateLoginField);
 }
 
 window.onload = main;

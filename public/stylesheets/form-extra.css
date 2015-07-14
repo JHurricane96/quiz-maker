@@ -1,6 +1,8 @@
 .container-form textarea {
+	resize: none;
+	font-family: Ubuntu;
 	border-radius: 4px;
-	padding: 5px;
+	padding: 3px;
 	border: 1px solid #B08040;
 	height: 80px;
 	background-color: rgba(40, 40, 40, 0.3);

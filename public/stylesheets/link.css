@@ -10,6 +10,7 @@
 }
 
 .container-body a:hover {
+	cursor: pointer;
 	top: 1px;
 }
 

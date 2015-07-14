@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Edit your question</title>
+		<link rel="stylesheet" href="/stylesheets/header.css" />
+		<link rel="stylesheet" href="/stylesheets/container.css" />
+		<link rel="stylesheet" href="/stylesheets/form.css" />
+		<link rel="stylesheet" href="/stylesheets/form-extra.css" />
+		<link rel="stylesheet" href="/stylesheets/make.css" />
+		<script src="/javascripts/make.js"></script>
+	</head>
+	<body>
+		<%- include("header") %>
+		<div class="container">
+			<div class="container-header">
+				<h1>Edit your question!</h1>
+			</div>
+			<div class="container-body">
+				<form id="make" class="container-form" action=<%= "edit/submit?id=" + _id %> method="post">
+					<br /><br /><br />
+					<div><label id="question" class="form-left">Your question:</label><textarea name="question" class="form-right" required><%= question %></textarea></div><br /><br />
+					<div><label class="form-left">Choice A:</label><input class="form-right" name="choiceA" type="text" value="<%= choiceA %>" required></input></div><br /><br />
+					<div><label class="form-left">Choice B:</label><input class="form-right" name="choiceB" type="text" value="<%= choiceB %>"required></input></div><br /><br />
+					<div><label class="form-left">Choice C:</label><input class="form-right" name="choiceC" type="text" value="<%= choiceC %>"required></input></div><br /><br />
+					<div><label class="form-left">Choice D:</label><input class="form-right" name="choiceD" type="text" value="<%= choiceD %>"required></input></div><br /><br />
+					<div><label class="form-left">Correct answer:</label>
+						<select class="form-right" name="correctAnswer" required>
+							<option value="">Select...</option>
+							<option value="A" <% if (correctAnswer == "A") { %> selected <% } %> >A</option>
+							<option value="B" <% if (correctAnswer == "B") { %> selected <% } %> >B</option>
+							<option value="C" <% if (correctAnswer == "C") { %> selected <% } %> >C</option>
+							<option value="D" <% if (correctAnswer == "D") { %> selected <% } %> >D</option>
+						</select>
+					</div><br /><br />
+					<div><label class="form-left">Category:</label>
+						<select class="form-right" name="category" required>
+							<option value="">Select...</option>
+							<option value="sports" <% if (category == "sports") { %> selected <% } %> >Sports</option>
+							<option value="video games" <% if (category == "video games") { %> selected <% } %> >Video games</option>
+							<option value="literature" <% if (category == "literature") { %> selected <% } %> >Literature</option>
+							<option value="movies and shows" <% if (category == "movies and shows") { %> selected <% } %> >Movies and shows</option>
+							<option value="science" <% if (category == "science") { %> selected <% } %> >Science</option>
+						</select>
+					</div><br /><br />
+					<div><label class="form-left">Difficulty:</label>
+						<select class="form-right" name="difficulty" required>
+							<option value="">Select...</option>
+							<option value="1" <% if (difficulty == 1) { %> selected <% } %> >Easy</option>
+							<option value="2" <% if (difficulty == 2) { %> selected <% } %> >Medium</option>
+							<option value="3" <% if (difficulty == 3) { %> selected <% } %> >Hard</option>
+						</select>
+					</div><br /><br />
+					<button type="submit" class="button">Edit your question!</button>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

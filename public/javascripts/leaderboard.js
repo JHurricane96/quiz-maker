@@ -5,6 +5,7 @@ var userCount = 0;
 
 function main() {
 	var board = document.getElementById("board");
+	var container = document.querySelector(".container-body");
 	var allUsersLoaded = false;
 
 	function loadRanks() {
@@ -14,7 +15,6 @@ function main() {
 			req.open("GET", "?more=true&lastscore=" + lastRankScore + "&lastnames=" + sameRankUsers.join("+"), true);
 			console.log("sent" + "?more=true&lastscore=" + lastRankScore + "&lastnames=" + sameRankUsers.join("+"));
 			req.addEventListener("load", function() {
-				console.log("receive");
 				if (req.status < 400) {
 					var newInfo = JSON.parse(req.responseText);
 					if (newInfo[newInfo.length - 1] === true) {
@@ -23,13 +23,25 @@ function main() {
 					}
 					lastRankScore = newInfo[newInfo.length - 1].score;
 					lastRankName = newInfo[newInfo.length - 1].username;
-					newDiv = makeDiv(newInfo);
-					board.appendChild(newDiv);
+					newRows = makeDiv(newInfo);
+					newRows.forEach(function (row) {
+						board.appendChild(row);
+					});
+					container.removeChild(document.getElementById("loading-text"));
 					if (!allUsersLoaded)
 						window.addEventListener("scroll", loadRanks);
 				}
+				else {
+					container.removeChild(document.getElementById("loading-text"));
+					window.addEventListener("scroll", loadRanks);
+				}
 			});
 			req.send(null);
+			var loadingText = document.createElement("p");
+			loadingText.innerHTML = "Loading...";
+			loadingText.id = "loading-text";
+			loadingText.style.textAlign = "center";
+			container.appendChild(loadingText)
 		}
 	}
 
@@ -55,13 +67,14 @@ function main() {
 }
 
 function makeDiv(users) {
-	var newDiv = document.createElement("div");
+	var newRows = [];
 	for (var i = 0; i < users.length; ++i) {
-		var newRankDiv = document.createElement("div");
-		var newLi = document.createElement("li");
-		newRankDiv.className = "container-rank";
+		var newRow = document.createElement("tr");
+		var newCellRank = document.createElement("td");
+		var newCellUser = document.createElement("td");
+		var newCellScore = document.createElement("td");
 		if (users[i].username == curUsername)
-			newRankDiv.id = "your-rank";
+			newRow.id = "your-rank";
 		if (sameRankScore != users[i].score) {
 			userCount += sameRankCount + 1;
 			sameRankCount = 0;
@@ -72,11 +85,15 @@ function makeDiv(users) {
 			sameRankCount++;
 			sameRankUsers.push(users[i].username);
 		}
-		newLi.innerHTML = userCount +  ". " + users[i].username + ": " + users[i].score;
-		newRankDiv.appendChild(newLi);
-		newDiv.appendChild(newRankDiv);
+		newCellRank.innerHTML = userCount;
+		newCellUser.innerHTML = users[i].username;
+		newCellScore.innerHTML = users[i].score;
+		newRow.appendChild(newCellRank);
+		newRow.appendChild(newCellUser);
+		newRow.appendChild(newCellScore);
+		newRows.push(newRow);
 	}
-	return newDiv;
+	return newRows;
 }
 
 window.onload = main;

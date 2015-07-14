@@ -20,10 +20,15 @@ function main() {
 				newDiv = makeDiv(newInfo);
 				var scrollY = pageYOffset;
 				container.insertBefore(newDiv, moreButton);
+				moreButton.innerHTML = "More";
 				window.scrollTo(0, scrollY);
+			}
+			else {
+				moreButton.innerHTML = "More";
 			}
 		});
 		req.send(null);
+		moreButton.innerHTML = "Loading..."
 	}
 
 	function initSameScoreFix() {

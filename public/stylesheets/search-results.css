@@ -20,3 +20,7 @@ p.container-extra-question {
 	font-size: 0.95em;
 	margin-left: 90px;
 }
+
+.button {
+	width: 90%;
+}

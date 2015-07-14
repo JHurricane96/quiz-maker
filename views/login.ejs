@@ -18,16 +18,16 @@
 			<div class="container-body">
 				<form id="login" action="/login/submit" method="post">
 					<br />
-					<div><label class="form-left">Username:</label><input type="text" name="username" class="form-right"></input></div><br />
-					<div><label class="form-left">Password:</label><input type="password" name="password" class="form-right"></input></div><br />
+					<div><label class="form-left">Username:</label><input type="text" name="username" class="form-right" max-length="32" pattern="[0-9a-zA-z._]*" required></input></div><br />
+					<div><label class="form-left">Password:</label><input type="password" name="password" class="form-right" max-length="32" pattern="[0-9a-zA-z._]*" required></input></div><br />
 					<button type="submit">Log In</button>
 				</form>
 				<form id="register" action="register/submit" method="post">
 					<br />
-					<div><label class="form-left">Name:</label><input type="text" name="name" class="form-right"></input></div><br />
-					<div><label class="form-left">Username:</label><input type="text" name="username" class="form-right"></input></div><br />
-					<div><label class="form-left">Password:</label><input type="password" name="password" class="form-right"></input></div><br />
-					<div><label class="form-left">Confirm password:</label><input type="password" class="form-right"></input></div><br />
+					<div><label class="form-left">Name:</label><input type="text" name="name" class="form-right" max-length="80" required></input></div><br />
+					<div><label class="form-left">Username:</label><input type="text" name="username" class="form-right" max-length="32" pattern="[0-9a-zA-Z._]*" required></input></div><br />
+					<div><label class="form-left">Password:</label><input type="password" name="password" class="form-right" max-length="32" pattern="[0-9a-zA-Z._]*" required></input></div><br />
+					<div><label class="form-left">Confirm password:</label><input type="password" class="form-right" max-length="32" pattern="[0-9a-zA-Z._]*" required></input></div><br />
 					<button type="submit">Register</button>
 				</form>
 			</div>

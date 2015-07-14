@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF=8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Question</title>
+		<link rel="stylesheet" href="/stylesheets/header.css" />
+		<link rel="stylesheet" href="/stylesheets/container.css" />
+		<link rel="stylesheet" href="/stylesheets/form-extra.css" />
+		<link rel="stylesheet" href="/stylesheets/link.css" />
+		<link rel="stylesheet" href="/stylesheets/yours-question.css" />
+		<script src="/javascripts/yours-question.js"></script>
+	</head>
+	<body>
+		<%- include("header") %>
+		<div class="container">
+			<div class="container-header">
+				<h1>Question</h1>
+			</div>
+			<div class="container-body">
+				<br />
+				<h2><%= question %></h2>
+				<p class="re-align"><span class="left option" class="option">A:</span> <span class="right"><%= choiceA %></span></p>
+				<p class="re-align"><span class="left option">B:</span> <span class="right"><%= choiceB %></span></p>
+				<p class="re-align"><span class="left option">C:</span> <span class="right"><%= choiceC %></span></p>
+				<p class="re-align"><span class="left option">D:</span> <span class="right"><%= choiceD %></span></p><br />
+				<p>Correct Answer: <span class="option"><%= correctAnswer %></span></p>
+				<p><a href=<%= "/home/edit?id=" + _id %> data-hover="Edit">Edit</a></p>
+				<p><a id="remove" data-hover="Remove">Remove</a></p>
+				<div id="confirm">
+					<p>Sure?</p>
+					<button id="confirm-delete" class="button">Yes</button><button id="reject-delete" class="button">No</button>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
