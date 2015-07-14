@@ -1,6 +1,7 @@
 var express = require("express");
 var session = require("express-session");
 var initdb = require("../initdb");
+var sha512 = require("js-sha512").sha512;
 router = express.Router();
 
 router.get("/*", function (req, res, next) {
@@ -30,6 +31,10 @@ router.use(/\/login|\/register|\/check/, function (req, res, next) {
 });
 
 router.get("/check", function (req, res, next) {
+	if (req.query.username === "") {
+		res.send("Empty username");
+		return;
+	}
 	if (!req.query.username)
 		return next(new Error("Invalid query"));
 	db = initdb.db();
@@ -57,7 +62,7 @@ router.post("/login/submit", function (req, res, next) {
 			return;
 		}
 		if (data.username == req.body.username) {
-			if (data.password == req.body.password) {
+			if (data.password == sha512(req.body.password)) {
 				req.session["login"] = "Logged in";
 				req.session["username"] = req.body.username;
 				req.session.save();
@@ -93,6 +98,7 @@ router.post("/register/submit", function (req, res, next) {
 	verifyRegister(req.body, function (err, data) {
 		if (err)
 			return next(err);
+		data.password = sha512(data.password);
 		usersColl.insert(data, {w: 1}, function (err, result) {
 			if (err)
 				return next(err);

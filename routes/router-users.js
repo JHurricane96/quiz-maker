@@ -5,7 +5,7 @@ router = express.Router();
 
 var categories = ["sports", "video games", "science", "literature", "movies and shows", "all"];
 var itemsPerRequest = 10;
-var usersPerRequest = 11;
+var usersPerRequest = 10;
 
 router.use("/*", function (req, res, next) {
 	if (req.session.login != "Logged in")
@@ -530,7 +530,6 @@ router.get("/answer/submit/:id", function (req, res, next) {
 });
 
 router.post("/upvote", function (req, res, next) {
-	console.log(req.query.revote);
 	db = initdb.db();
 	if (!req.query.id)
 		return next(new Error("Id necessary"));

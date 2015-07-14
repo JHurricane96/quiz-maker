@@ -64,10 +64,12 @@ function main() {
 			req.addEventListener("load", function() {
 				if (req.status < 400) {
 					console.log("hey");
-					if (req.responseText == "Existing user exists")
-						event.target.setCustomValidity("This username has already been taken!");
-					else
+					if (req.responseText == "Valid username")
 						event.target.setCustomValidity("");
+					else if (req.responseText == "Empty username")
+						event.target.setCustomValidity("A username is necessary!");
+					else
+						event.target.setCustomValidity("This username has already been taken!");
 				}
 			});
 			req.send(null);
