@@ -1,7 +1,7 @@
 html, body {
 	margin: 0;
 	padding: 0;
-	background-image: url("/images/red-blue.jpg");
+	background-image: url("/images/science4.jpg");
 	background-attachment: fixed;
 	font-family: "Ubuntu";
 }
@@ -15,17 +15,17 @@ html, body {
 	text-align: center;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
-	color: #CCCCCC;
+	color: #4080C0;
 	padding-top: 1px;
 	padding-bottom: 1px;
 	width: 100%;
-	background-color: rgba(40, 40, 40, 0.85);
+	background-color: rgba(20, 20, 20, 0.95);
 }
 
 .container-body {
 	border: 1px solid rgba(0, 0, 0, 0);
-	color: #CCCCCC;
-	background-color: rgba(0, 0, 0, 0.25);
+	color: white;
+	background-color: rgba(0, 0, 0, 0.75);
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 }

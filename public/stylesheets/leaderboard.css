@@ -31,19 +31,20 @@
 }
 
 #board #your-rank-first td{
+	background-color: rgba(40, 40, 120, 0.7);
 	border-bottom: 1px solid rgba(20, 20, 60, 0.5);
 }
 
 #board {
 	border-spacing: 0;
-	width: 70%;
+	width: 80%;
 	text-align: center;
 	margin: auto;
 }
 
 #board th {
-	color: #CCCCCC;
-	background-color: rgba(40, 40, 40, 0.6);
+	color: white;
+	background-color: rgba(30, 255, 100, 0.5);
 	font-size: 1.5em;
 	font-weight: 100;
 	padding: 20px;
@@ -58,18 +59,14 @@
 	border-top-right-radius: 4px;
 }
 
-#board tr {
-	color: #BBBBBB;
-}
-
 #board tr#your-rank {
-	background-color: rgba(250, 160, 80, 0.3);
+	background-color: rgba(30, 100, 255, 0.95);
 }
 
 #board td {
 	padding: 25px 0;
 	font-size: 1.25em;
-	background-color: rgba(40, 40, 80, 0.2);
+	background-color: rgba(40, 40, 80, 0.6);
 }
 
 #board td:first-child {

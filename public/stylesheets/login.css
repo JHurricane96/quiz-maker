@@ -15,9 +15,15 @@ h1 {
 	font-weight: 100;
 }
 
-.container-body {
+div.container-header {
+	color: white;
+	background-color: rgba(40, 40, 40, 0.95);
+}
+
+div.container-body {
 	text-align: center;
 	padding-bottom: 20px;
+	background-color: rgba(40, 40, 40, 0.25);
 }
 
 .container-plain {

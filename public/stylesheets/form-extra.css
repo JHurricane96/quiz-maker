@@ -3,9 +3,9 @@
 	font-family: Ubuntu;
 	border-radius: 4px;
 	padding: 3px;
-	border: 1px solid #B08040;
+	border: 1px solid #4080C0;
 	height: 80px;
-	background-color: rgba(40, 40, 40, 0.3);
+	background-color: rgba(40, 40, 40, 0.7);
 	color: #CCCCCC;
 	transition: border 0.15s;
 }
@@ -13,8 +13,8 @@
 .container-form input {
 	border-radius: 4px;
 	padding: 3px;
-	border: 1px solid #B08040;
-	background-color: rgba(40, 40, 40, 0.3);
+	border: 1px solid #4080C0;
+	background-color: rgba(40, 40, 40, 0.7);
 	color: #CCCCCC;
 	transition: border 0.15s;
 }
@@ -22,8 +22,8 @@
 .container-form select {
 	border-radius: 4px;
 	padding: 3px;
-	border: 1px solid #B08040;
-	background-color: rgba(40, 40, 40, 0.3);
+	border: 1px solid #4080C0;
+	background-color: rgba(40, 40, 40, 0.7);
 	color: #CCCCCC;
 	transition: border: 0.15s;
 }

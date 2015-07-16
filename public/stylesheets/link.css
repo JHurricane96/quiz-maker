@@ -22,8 +22,8 @@
 	left: 0;
 	overflow: hidden;
 	max-width: 0;
-	border-bottom: 2px solid #fff;
-	color: white;
+	border-bottom: 2px solid #4080C0;
+	color: #4080C0;
 	content: attr(data-hover);
 	transition: max-width 0.3s 0.05s;
 }

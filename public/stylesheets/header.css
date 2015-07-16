@@ -3,7 +3,7 @@
 	height: 68px;
 	text-align: center;
 	width: 99%;
-	background-color: rgba(40, 40, 40, 0.4);
+	background-color: rgba(30, 100, 255, 0.95);
 	border-bottom: 1px solid rgba(40, 40, 40, 0.85);
 }
 
@@ -19,7 +19,8 @@
 	position: absolute;
 	width: 15%;
 	height: 2px;
-	background: #606060;
+	//background-color: #606060;
+	background-color: white;
 	content: '';
 	opacity: 0;
 	transition: all 0.3s 0.05s;
@@ -50,7 +51,7 @@
 	position: relative;
 	top: 1px;
 	cursor: pointer;
-	color: #4080C0;
+	color: #F4A460;
 }
 
 .header-link:active .header-button {
@@ -75,10 +76,10 @@
 	display: block;
 	line-height: 68px;
 	width: 100%;
-	color: #CCCCCC;
+	color: white;
 	font-family: Ubuntu;
-	font-size: 1.1em;
-	transition: color 0.3s 0.05s;
+	font-size: 1.3em;
+	transition: all 0.3s 0.05s;
 }
 
 .header-button:focus {
@@ -144,7 +145,7 @@
 
 #header-search button:hover {
 	cursor: pointer;
-	color: #4080C0;
+	color: #F4A460;
 }
 
 #header-search button:active {
