@@ -31,7 +31,7 @@ Routes
 * `/login/retry`, get: A failed login attempt redirects you to this page. If you have not failed a login attempt, this page will redirect
 you to the normal login page.
 * `/check`, get: A route that accepts one query string, `username`, and checks if it exists.
-* `/logout`, get: Destroys the current session and redirects you to the login page.
+* `/logout`, get: Destroys the current session and redirects you to the login page.  
 The following pages are accessible only to users who have logged in.
 * `/home`, get: The home page. All the routes following this one are mounted on `/home`.
 * `/make`, get: A form for creating a question.
@@ -72,7 +72,7 @@ There is one database, `quizMaker`. It has two collections, `users` and `questio
 * score
 * questions (an array of question ID's that this user has set)
 * answeredQuestions (an array of question ID's that this user has answered)
-* answers (a list of answers to the questions that the user has answered. answer[questionID] gives the user's answer)
+* answers (a list of answers to the questions that the user has answered. answer[questionID] gives the user's answer)  
 A document in the `questions` collection has the following fields:
 * question (the question itself)
 * choiceA to choiceD (the four choices)
