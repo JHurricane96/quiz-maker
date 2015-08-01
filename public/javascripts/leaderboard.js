@@ -13,13 +13,16 @@ function main() {
 			window.removeEventListener("scroll", loadRanks);
 			var req = new XMLHttpRequest();
 			req.open("GET", "?more=true&lastscore=" + lastRankScore + "&lastnames=" + sameRankUsers.join("+"), true);
-			console.log("sent" + "?more=true&lastscore=" + lastRankScore + "&lastnames=" + sameRankUsers.join("+"));
 			req.addEventListener("load", function() {
 				if (req.status < 400) {
 					var newInfo = JSON.parse(req.responseText);
 					if (newInfo[newInfo.length - 1] === true) {
 						newInfo.pop();
 						allUsersLoaded = true;
+					}
+					if (newInfo.length == 0) {
+						container.removeChild(document.getElementById("loading-text"));
+						return;
 					}
 					lastRankScore = newInfo[newInfo.length - 1].score;
 					lastRankName = newInfo[newInfo.length - 1].username;
